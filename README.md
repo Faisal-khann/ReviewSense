@@ -9,9 +9,10 @@ A web application to analyze customer reviews on Amazon products. This tool leve
   
 ---
 
-## Table of Contents
+## 📌Table of Contents
 - [Business Problem](#business-problem)
 - [Features](#features)
+- [NLP-Pipeline & Ml Model notebook](#notebook)
 - [How It Works](#how-it-works)
 - [Technologies Used](#technology-used)
 - [Project Structure](#project-structure)
@@ -24,7 +25,7 @@ A web application to analyze customer reviews on Amazon products. This tool leve
 
 ---
 
-## Business Problem
+## 📌Business Problem
 
 In the era of e-commerce, customers heavily rely on reviews before making a purchase. Amazon products often receive **hundreds or thousands of reviews**, making it challenging for:  
 
@@ -49,7 +50,7 @@ This allows both customers and businesses to make **data-driven decisions**, sav
 
 ---
 
-## Features
+## 📌Features
 
 - Extract sentiment from reviews using **ASIN**  
 - Manual review sentiment analysis  
@@ -62,7 +63,14 @@ This allows both customers and businesses to make **data-driven decisions**, sav
 
 ---
 
-## How It Works
+## 📌NLP-Pipeline & Ml Model notebook
+<div><p><em>Below is the notebook of end-to-end workflow that shows how to implement an NLP pipeline with FastText data and how to build an ML model to predict sentiments </em></p></div>
+
+📁 Notebook: [`workbook.ipynb`](https://github.com/Faisal-khann/Customer_Sentiment_Analyzer/blob/main/notebook/workbook.ipynb)
+
+---
+
+## 📌How It Works
 
 1. **ASIN Analysis**: Enter the Amazon product ASIN → App fetches reviews → Sentiment classification → Summary generated.  
 2. **Manual Review Input**: Enter your own review → Sentiment is predicted instantly.  
@@ -71,7 +79,7 @@ This allows both customers and businesses to make **data-driven decisions**, sav
 
 ---
 
-## Technologies Used
+## 📌Technologies Used
 
 - **Programming Language:** Python
 - **Web Framework:** Flask / Django
@@ -80,7 +88,7 @@ This allows both customers and businesses to make **data-driven decisions**, sav
 - **Database:** SQLite (for storing manual reviews)
 ---
 
-## Project Structure
+## 📌Project Structure
 
 ```text
 movie-review-sentiment-analyzer/
@@ -92,13 +100,13 @@ movie-review-sentiment-analyzer/
 │   ├── word2vec.model
 │   └── tfidf.pkl
 ├── app.py                 # Streamlit web app
-├── notebook.ipynb         # NLP pipeline + Model training script
+├── workbook.ipynb         # NLP pipeline + Model training script
 ├── requirements.txt       # Python dependencies
 └── README.md              # Project documentation
 
 ```
 ---
-## Installation
+## 📌Installation
 
 1. **Clone the repository:**
 
@@ -129,7 +137,7 @@ nltk.download('punkt')
 nltk.download('wordnet')
 ```
 
-## Preprocessing & Feature Extraction (Optimized with Swifter)
+## 📌Preprocessing & Feature Extraction (Optimized with Swifter)
 
 <em>This section covers the steps to clean movie reviews, tokenize them safely using the Word2Vec vocabulary, and convert them into document vectors for modeling.</em>
 
@@ -226,7 +234,7 @@ Notes:
 - Converts each review into a numerical vector suitable for machine learning models.
 - Swifter significantly speeds up vectorization for large datasets.
 
-## Screenshots
+## 📌Screenshots
 <div>
   <img width="1815" height="788" alt="Image" src="https://github.com/user-attachments/assets/093b0da3-dd1e-40c9-9987-a659a06696f3" />
 
@@ -241,7 +249,7 @@ Notes:
 <img width="1809" height="598" alt="Image" src="https://github.com/user-attachments/assets/59c31bef-28c5-4563-9150-143355e2474e" />
 </div>
 
-## Author & Contact
+## 📌Author & Contact
 
 **Faisal Khan**  
 *Data Analyst | Aspiring Data Scientist*
