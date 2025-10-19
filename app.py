@@ -36,9 +36,9 @@ st.set_page_config(page_title="Reviews Lab", layout="wide")
 # ----------------- Load Models (Cached) -----------------
 @st.cache_data
 def load_models():
-    model = joblib.load("final_model.pkl")
-    w2v_model = Word2Vec.load("word2vec_model.model")
-    tfidf = joblib.load("tfidf.pkl")
+    model = joblib.load("model-pkl/final_model.pkl")
+    w2v_model = Word2Vec.load("model-pkl/word2vec_model.model")
+    tfidf = joblib.load("model-pkl/tfidf.pkl")
     return model, w2v_model, tfidf
 
 model, w2v_model, tfidf = load_models()
