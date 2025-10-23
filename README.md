@@ -9,9 +9,10 @@ A web application to analyze customer reviews on Amazon products. This tool leve
   
 ---
 
-## Table of Contents
+## 📌Table of Contents
 - [Business Problem](#business-problem)
 - [Features](#features)
+- [NLP-Pipeline & Ml Model notebook](#notebook)
 - [How It Works](#how-it-works)
 - [Technologies Used](#technology-used)
 - [Project Structure](#project-structure)
@@ -24,7 +25,7 @@ A web application to analyze customer reviews on Amazon products. This tool leve
 
 ---
 
-## Business Problem
+## 📌Business Problem
 
 In the era of e-commerce, customers heavily rely on reviews before making a purchase. Amazon products often receive **hundreds or thousands of reviews**, making it challenging for:  
 
@@ -49,7 +50,7 @@ This allows both customers and businesses to make **data-driven decisions**, sav
 
 ---
 
-## Features
+## 📌Features
 
 - Extract sentiment from reviews using **ASIN**  
 - Manual review sentiment analysis  
@@ -62,7 +63,14 @@ This allows both customers and businesses to make **data-driven decisions**, sav
 
 ---
 
-## How It Works
+## 📌NLP-Pipeline & Ml Model notebook
+<div><p><em>Below is the notebook of end-to-end workflow that shows how to implement an NLP pipeline with FastText data and how to build an ML model to predict sentiments </em></p></div>
+
+📁 Notebook: [`workbook.ipynb`](https://github.com/Faisal-khann/Customer_Sentiment_Analyzer/blob/main/notebook/workbook.ipynb)
+
+---
+
+## 📌How It Works
 
 1. **ASIN Analysis**: Enter the Amazon product ASIN → App fetches reviews → Sentiment classification → Summary generated.  
 2. **Manual Review Input**: Enter your own review → Sentiment is predicted instantly.  
@@ -71,7 +79,7 @@ This allows both customers and businesses to make **data-driven decisions**, sav
 
 ---
 
-## Technologies Used
+## 📌Technologies Used
 
 - **Programming Language:** Python
 - **Web Framework:** Flask / Django
@@ -80,7 +88,7 @@ This allows both customers and businesses to make **data-driven decisions**, sav
 - **Database:** SQLite (for storing manual reviews)
 ---
 
-## Project Structure
+## 📌Project Structure
 
 ```text
 movie-review-sentiment-analyzer/
@@ -92,13 +100,13 @@ movie-review-sentiment-analyzer/
 │   ├── word2vec.model
 │   └── tfidf.pkl
 ├── app.py                 # Streamlit web app
-├── notebook.ipynb         # NLP pipeline + Model training script
+├── workbook.ipynb         # NLP pipeline + Model training script
 ├── requirements.txt       # Python dependencies
 └── README.md              # Project documentation
 
 ```
 ---
-## Installation
+## 📌Installation
 
 1. **Clone the repository:**
 
@@ -129,7 +137,7 @@ nltk.download('punkt')
 nltk.download('wordnet')
 ```
 
-## Preprocessing & Feature Extraction (Optimized with Swifter)
+## 📌Preprocessing & Feature Extraction (Optimized with Swifter)
 
 <em>This section covers the steps to clean movie reviews, tokenize them safely using the Word2Vec vocabulary, and convert them into document vectors for modeling.</em>
 
@@ -226,22 +234,37 @@ Notes:
 - Converts each review into a numerical vector suitable for machine learning models.
 - Swifter significantly speeds up vectorization for large datasets.
 
-## Screenshots
+## 📌Screenshots
 <div>
-  <img width="1815" height="788" alt="Image" src="https://github.com/user-attachments/assets/093b0da3-dd1e-40c9-9987-a659a06696f3" />
+  <img width="1836" height="766" alt="Image" src="https://github.com/user-attachments/assets/55314878-9b46-4c77-a07b-2f5fc48c7008" />
 
-<img width="1806" height="493" alt="Image" src="https://github.com/user-attachments/assets/b5219372-7ebd-417e-9fee-4e7befda00ca" />
+<img width="1848" height="743" alt="Image" src="https://github.com/user-attachments/assets/946226d0-d48d-47b3-98e9-63b91af6dec3" />
 
-<img width="1808" height="404" alt="Image" src="https://github.com/user-attachments/assets/fdde688b-b203-4bec-8523-46844e479d19" />
+<img width="1828" height="701" alt="Image" src="https://github.com/user-attachments/assets/258027b2-dd74-4760-bf38-7c30bd4ce70c" />
 
-<img width="1803" height="405" alt="Image" src="https://github.com/user-attachments/assets/0b0b63c5-e19f-4b79-a1cb-e8c6972dd4b0" />
+<img width="1832" height="833" alt="Image" src="https://github.com/user-attachments/assets/df72edbd-f3e0-4a7c-bdb7-0fa6a215071b" />
 
-<img width="1812" height="811" alt="Image" src="https://github.com/user-attachments/assets/4f589ecf-4c51-4d72-be4c-8e4a04da4ed3" />
 
-<img width="1809" height="598" alt="Image" src="https://github.com/user-attachments/assets/59c31bef-28c5-4563-9150-143355e2474e" />
+<img width="1823" height="682" alt="Image" src="https://github.com/user-attachments/assets/1afab9e0-be50-458b-a840-025bce220383" />
+
+<img width="1831" height="688" alt="Image" src="https://github.com/user-attachments/assets/15ffc90a-e141-4f2a-8405-9f0736ff4154" />
+
+<img width="1808" height="404" alt="Image" src="https://github.com/user-attachments/assets/7cd63218-273b-453c-9f6f-7b26ce90cbcc" />
+
+<img width="1745" height="722" alt="Image" src="https://github.com/user-attachments/assets/3f140fc8-6f2a-4609-9e5a-4a66155cc5e2" />
+
+<img width="1814" height="524" alt="Image" src="https://github.com/user-attachments/assets/86265377-68a0-44e6-bad2-c71c46cfe8b7" />
+
+<img width="1812" height="542" alt="Image" src="https://github.com/user-attachments/assets/7aa43f0b-099f-43bf-9743-edc7f388718e" />
+
+<img width="1819" height="738" alt="Image" src="https://github.com/user-attachments/assets/3f7096ed-7044-4faa-a448-6894daa5c0c1" />
+
+<img width="1812" height="811" alt="Image" src="https://github.com/user-attachments/assets/e7793720-ccfd-4652-87c2-381e2928b582" />
+
+<img width="1809" height="598" alt="Image" src="https://github.com/user-attachments/assets/161d96cb-5548-4166-adb6-1f99e5383c75" />
 </div>
 
-## Author & Contact
+## 📌Author & Contact
 
 **Faisal Khan**  
 *Data Analyst | Aspiring Data Scientist*
