@@ -12,8 +12,6 @@ from gensim.models import Word2Vec
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
-from wordcloud import WordCloud
-import matplotlib.pyplot as plt
 import nltk
 import altair as alt
 
@@ -48,12 +46,20 @@ stop_words = set(stopwords.words('english'))
 lemmatizer = WordNetLemmatizer()
 
 def preprocess_text(text):
+    """
+    Clean, tokenize, remove stopwords, and lemmatize input text.
+    Returns a list of tokens.
+    """
     text = re.sub(r'<.*?>', ' ', text.lower())
     text = re.sub(r'\d+', '', text)
     tokens = word_tokenize(text)
     return [lemmatizer.lemmatize(w) for w in tokens if w.isalpha() and w not in stop_words]
 
 def weighted_vector(tokens, w2v_model, tfidf_vectorizer):
+    """
+    Compute a weighted Word2Vec vector for the given tokens using TF-IDF weights.
+    Returns a 1D numpy array.
+    """
     word2weight = dict(zip(tfidf_vectorizer.get_feature_names_out(), tfidf_vectorizer.idf_))
     vectors, weights = [], []
     for w in tokens:
@@ -65,6 +71,7 @@ def weighted_vector(tokens, w2v_model, tfidf_vectorizer):
     return np.average(vectors, axis=0, weights=weights)
 
 def clean_text(text):
+    """Remove HTML tags and extra spaces, retain only safe characters."""
     text = re.sub(r'<.*?>', '', text)
     text = re.sub(r'[^a-zA-Z0-9.,!?\'" ]+', ' ', text)
     return re.sub(r'\s+', ' ', text).strip()
@@ -83,8 +90,11 @@ CREATE TABLE IF NOT EXISTS reviews (
 conn.commit()
 
 # ----------------- Load CSS -----------------
-with open("styles.css") as f:
-    st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+if os.path.exists("styles.css"):
+    with open("styles.css") as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+else:
+    st.warning("styles.css file not found. Default styles applied.")
 
 # ----------------- Top Nav & Hero -----------------
 st.markdown("""
@@ -156,7 +166,7 @@ with tabs[0]:
             if date_cols:
                 date_col = date_cols[0]
                 df_asin[date_col] = pd.to_datetime(df_asin[date_col], errors='coerce')
-                trend_df = df_asin.groupby([pd.Grouper(key=date_col, freq='M'),'pred']).size().reset_index(name='count')
+                trend_df = df_asin.groupby([pd.Grouper(key=date_col, freq='ME'),'pred']).size().reset_index(name='count')
                 trend_df['sentiment'] = trend_df['pred'].map({1:'Positive',0:'Negative'})
                 trend_chart = alt.Chart(trend_df).mark_line(point=True).encode(
                     x='date:T',
@@ -363,7 +373,7 @@ with tabs[2]:
                     if date_col:
                         try:
                             df_csv[date_col] = pd.to_datetime(df_csv[date_col], errors='coerce')
-                            trend_df = df_csv.groupby([pd.Grouper(key=date_col, freq='M'), 'sentiment']).size().reset_index(name='count')
+                            trend_df = df_csv.groupby([pd.Grouper(key=date_col, freq='ME'), 'sentiment']).size().reset_index(name='count')
                             trend_df['total'] = trend_df.groupby(date_col)['count'].transform('sum')
                             trend_df['pct'] = (trend_df['count'] / trend_df['total'] * 100).round(1)
 
