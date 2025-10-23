@@ -326,7 +326,7 @@ with tabs[2]:
                         tokens = [lemmatizer.lemmatize(w) for w in word_tokenize(str(r).lower())
                                   if w.isalpha() and w not in stop_words]
                         vecs, weights = [], []
-                        for w in tokens:
+                        for w in tokens: 
                             if w in valid_tokens:
                                 vecs.append(w2v_model.wv[w])
                                 weights.append(word2weight[w])
