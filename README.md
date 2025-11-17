@@ -2,7 +2,7 @@
 
 <!--![Sentiment Analyzer Banner](banner_image_link_here)-->
 <div><em>
-A web application to analyze customer reviews on Amazon products. This tool leverages a full <strong>NLP pipeline</strong> combined with <strong>ML model building</strong> to understand customer sentiment both automatically and manually. It summarizes sentiments, performs trend analysis, and visualizes sentiment distribution using interactive charts. All manual reviews are stored in a database for historical tracking and further data cleaning.
+A web application to analyze customer reviews on Amazon products. This tool leverages a full <strong>NLP pipeline</strong> combined with <strong>ML model building</strong> to understand customer sentiment both automatically and manually. It summarizes sentiments, performs trend analysis, and visualizes sentiment distribution using interactive charts. All manual reviews are stored in a database for historical tracking and further data cleaning
 </em></div><br>
 
 [![View Live App](https://img.shields.io/badge/View_Live_App-Click_Here-blue?style=for-the-badge&logo=streamlit)](https://faisal-khann-customer-sentiment-analyzer-app-ulfzmm.streamlit.app/)
