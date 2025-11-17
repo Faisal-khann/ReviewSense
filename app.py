@@ -15,31 +15,32 @@ from nltk.stem import WordNetLemmatizer
 import nltk
 import altair as alt
 
-# ===============================
-# NLTK Setup
-# ===============================
-nltk_data_dir = "/tmp/nltk_data"
-os.makedirs(nltk_data_dir, exist_ok=True)
+# ----------------- NLTK LOCAL DIRECTORY -----------------
+BASE_DIR = os.path.dirname(__file__)
+NLTK_DIR = os.path.join(BASE_DIR, "nltk_data")
 
-nltk.data.path.append(nltk_data_dir)
+# Add local nltk_data to NLTK search path
+nltk.data.path.insert(0, NLTK_DIR)
 
-resources = [
-    ("tokenizers/punkt", "punkt"),
-    ("tokenizers/punkt_tab", "punkt_tab"),
-    ("corpora/stopwords", "stopwords"),
-    ("corpora/wordnet", "wordnet"),
+# Correct NLTK resource paths
+REQUIRED_RESOURCES = [
+    "tokenizers/punkt",
+    "tokenizers/punkt_tab",
+    "corpora/stopwords",
+    "corpora/wordnet",
 ]
 
-for resource_path, resource_name in resources:
+# Validate NLTK resources
+for resource in REQUIRED_RESOURCES:
     try:
-        nltk.data.find(resource_path)
+        nltk.data.find(resource)
     except LookupError:
-        nltk.download(resource_name, download_dir=nltk_data_dir, quiet=True)
+        raise RuntimeError(f"Missing NLTK resource: {resource}. You forgot to bundle it!")
 
-# ----------------- Streamlit Page Config -----------------
+# ----------------- STREAMLIT CONFIG -----------------
 st.set_page_config(page_title="Reviews Lab", layout="wide")
 
-# ----------------- Load Models (Cached) -----------------
+# ----------------- LOAD MODELS -----------------
 @st.cache_data
 def load_models():
     model = joblib.load("model-pkl/final_model.pkl")
@@ -49,8 +50,8 @@ def load_models():
 
 model, w2v_model, tfidf = load_models()
 
-# ----------------- Helpers -----------------
-stop_words = set(stopwords.words('english'))
+# ----------------- PREPROCESSING HELPERS -----------------
+stop_words = set(stopwords.words("english"))
 lemmatizer = WordNetLemmatizer()
 
 def preprocess_text(text):

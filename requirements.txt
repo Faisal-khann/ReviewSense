@@ -10,3 +10,5 @@ scikit-learn
 altair>=5.0.0
 vega_datasets
 plotly>=5.0.0
+nltk==3.8.1
+
