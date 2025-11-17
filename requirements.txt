@@ -3,12 +3,10 @@ pandas
 numpy==1.26.4
 joblib
 gensim
-nltk
+nltk==3.8.1
 wordcloud
 matplotlib
 scikit-learn
-altair>=5.0.0
+altair==5.0.1
 vega_datasets
-plotly>=5.0.0
-nltk==3.8.1
-
+plotly==5.15.0
