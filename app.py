@@ -18,15 +18,23 @@ import altair as alt
 # ===============================
 # NLTK Setup
 # ===============================
-nltk_data_dir = os.path.join(os.path.expanduser("~"), "nltk_data")
-os.environ["NLTK_DATA"] = nltk_data_dir
+nltk_data_dir = "/tmp/nltk_data"
 os.makedirs(nltk_data_dir, exist_ok=True)
 
-for resource in ["punkt", "stopwords", "wordnet"]:
+nltk.data.path.append(nltk_data_dir)
+
+resources = [
+    ("tokenizers/punkt", "punkt"),
+    ("tokenizers/punkt_tab", "punkt_tab"),
+    ("corpora/stopwords", "stopwords"),
+    ("corpora/wordnet", "wordnet"),
+]
+
+for resource_path, resource_name in resources:
     try:
-        nltk.data.find(resource)
+        nltk.data.find(resource_path)
     except LookupError:
-        nltk.download(resource, download_dir=nltk_data_dir, quiet=True)
+        nltk.download(resource_name, download_dir=nltk_data_dir, quiet=True)
 
 # ----------------- Streamlit Page Config -----------------
 st.set_page_config(page_title="Reviews Lab", layout="wide")
