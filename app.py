@@ -26,7 +26,6 @@ nltk.data.path.insert(0, NLTK_DIR)
 # NLTK resources your app needs
 REQUIRED_RESOURCES = [
     "tokenizers/punkt",
-    "tokenizers/punkt_tab",
     "corpora/stopwords",
     "corpora/wordnet",
 ]
