@@ -18,11 +18,12 @@ import altair as alt
 # ----------------- NLTK LOCAL DIRECTORY -----------------
 BASE_DIR = os.path.dirname(__file__)
 NLTK_DIR = os.path.join(BASE_DIR, "nltk_data")
+os.makedirs(NLTK_DIR, exist_ok=True)
 
 # Add local nltk_data to NLTK search path
 nltk.data.path.insert(0, NLTK_DIR)
 
-# Correct NLTK resource paths
+# NLTK resources your app needs
 REQUIRED_RESOURCES = [
     "tokenizers/punkt",
     "tokenizers/punkt_tab",
@@ -30,12 +31,12 @@ REQUIRED_RESOURCES = [
     "corpora/wordnet",
 ]
 
-# Validate NLTK resources
+# Download resources if missing
 for resource in REQUIRED_RESOURCES:
     try:
         nltk.data.find(resource)
     except LookupError:
-        raise RuntimeError(f"Missing NLTK resource: {resource}. You forgot to bundle it!")
+        nltk.download(resource.split('/')[-1], download_dir=NLTK_DIR)
 
 # ----------------- STREAMLIT CONFIG -----------------
 st.set_page_config(page_title="Reviews Lab", layout="wide")
