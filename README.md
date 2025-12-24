@@ -1,4 +1,4 @@
-# ReviewSense – Real-Time Sentiment Analysis Platform 
+# ReviewSense – Sentiment Analysis Platform 
 
 <!--![Sentiment Analyzer Banner](banner_image_link_here)-->
 <div><em>
